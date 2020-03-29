@@ -1,13 +1,18 @@
 const express = require('express');
-const cors = require('cors'); 
+const cors = require('cors');
+const { errors } = require('celebrate');
 const routes = require('./routes');
 
-const app = express(); // http://localhost:3333/
+const app = express();
 
 app.use(cors());
+
 app.use(express.json());
+
 app.use(routes);
 
+app.use(errors());
 
+module.exports = app;
 
-app.listen(3333);
+// http://localhost:3333/
